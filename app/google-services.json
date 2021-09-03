@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "344768515842",
+    "firebase_url": "https://wargakita-324704-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "wargakita-324704",
+    "storage_bucket": "wargakita-324704.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344768515842:android:e6731e141e45c281613c1b",
+        "android_client_info": {
+          "package_name": "dresta.putra.wargakita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344768515842-c3urldqviindeh317mvbeqg9eac8e6t6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dresta.putra.wargakita",
+            "certificate_hash": "b70d7ce16ea37a7a5ee920b1d5c8e2618063e16e"
+          }
+        },
+        {
+          "client_id": "344768515842-q0nrek8pljbpqbn6pf956cqsq9b194o9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv0qsfwClmA-t0LeVlvvt9uUOGXo5JP3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344768515842-q0nrek8pljbpqbn6pf956cqsq9b194o9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

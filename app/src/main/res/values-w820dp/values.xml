@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">344768515842-q0nrek8pljbpqbn6pf956cqsq9b194o9.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://wargakita-324704-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">344768515842</string>
+    <string name="google_api_key" translatable="false">AIzaSyBv0qsfwClmA-t0LeVlvvt9uUOGXo5JP3s</string>
+    <string name="google_app_id" translatable="false">1:344768515842:android:e6731e141e45c281613c1b</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBv0qsfwClmA-t0LeVlvvt9uUOGXo5JP3s</string>
+    <string name="google_storage_bucket" translatable="false">wargakita-324704.appspot.com</string>
+    <string name="project_id" translatable="false">wargakita-324704</string>
+</resources>
