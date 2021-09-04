@@ -34,12 +34,7 @@ public class PengaduanActivity extends AppCompatActivity {
     private EditText EtNamaLengkap,EtEmail,EtIsiAduan;
     private Button BtnKirim;
     private Toolbar toolbar;
-    interface APIPengaduan{
-        @FormUrlEncoded
-        @POST("api/pengaduan/kirim")
-        Call<ResponsePojo> kirimPengaduan(@Field("nama_lengkap") String nama_lengkap, @Field("email") String email, @Field("isi_aduan") String isi_aduan);
-    }
-    private APIPengaduan apiPengaduan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +52,7 @@ public class PengaduanActivity extends AppCompatActivity {
                 kirim(BtnKirim);
             }
         });
-        apiPengaduan = RetrofitClientInstance.getRetrofitInstance(PengaduanActivity.this).create(APIPengaduan.class);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +74,6 @@ public class PengaduanActivity extends AppCompatActivity {
 //        String EtNamaLengkaps,EtEmail,EtIsiAduan;
         button.setEnabled(false);
         final String EtNamaLengkaps = EtNamaLengkap.getText().toString();
-        final String EtEmails = EtEmail.getText().toString();
         final String EtIsiAduans = EtIsiAduan.getText().toString();
         if (TextUtils.isEmpty(EtNamaLengkaps)) {
             EtNamaLengkap.setError("Nama masih kosong");
@@ -88,20 +82,7 @@ public class PengaduanActivity extends AppCompatActivity {
             DrawableButtonExtensionsKt.hideProgress(button, "Kirim");
             return;
         }
-        if (TextUtils.isEmpty(EtEmails)) {
-            EtEmail.setError("Email masih kosong");
-            EtEmail.requestFocus();
-            button.setEnabled(true);
-            DrawableButtonExtensionsKt.hideProgress(button, "Kirim");
-            return;
-        }
-        if (!TextUtils.isEmpty(EtEmails) && !Patterns.EMAIL_ADDRESS.matcher(EtEmails).matches()) {
-            EtEmail.setError("Format email tidak sesuai");
-            EtEmail.requestFocus();
-            button.setEnabled(true);
-            DrawableButtonExtensionsKt.hideProgress(button, "Kirim");
-            return;
-        }
+
         if (TextUtils.isEmpty(EtIsiAduans)) {
             EtIsiAduan.setError("Isi aduan masih kosong");
             EtIsiAduan.requestFocus();
@@ -112,33 +93,8 @@ public class PengaduanActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Call<ResponsePojo> responsePojoCall = apiPengaduan.kirimPengaduan(EtNamaLengkaps,EtEmails,EtIsiAduans);
-                responsePojoCall.enqueue(new Callback<ResponsePojo>() {
-                    @Override
-                    public void onResponse(Call<ResponsePojo> call, Response<ResponsePojo> response) {
-                        if (response.body()!= null){
-                            if (response.body().getStatus()==200){
-                                button.setEnabled(true);
-                                DrawableButtonExtensionsKt.hideProgress(button, R.string.progressRight);
-                                EtNamaLengkap.setText(null);
-                                EtEmail.setText(null);
-                                EtIsiAduan.setText(null);
-                                Toast.makeText(PengaduanActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
-                            }else{
-                                button.setEnabled(true);
-                                DrawableButtonExtensionsKt.hideProgress(button, R.string.progressRight);
-                                Toast.makeText(PengaduanActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponsePojo> call, Throwable t) {
-                        button.setEnabled(true);
-                        DrawableButtonExtensionsKt.hideProgress(button, "Gagal, coba lagi");
-                        Toast.makeText(PengaduanActivity.this, "Terjadi gangguan jaringan", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                Toast.makeText(PengaduanActivity.this, "Pengaduan berhasil dikirim", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         }, 3000);

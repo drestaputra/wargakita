@@ -12,7 +12,12 @@
         android:layout_height="match_parent"
         android:background="@color/colorWhite">
 
-
+        <ProgressBar
+            android:id="@+id/pb_dialogs"
+            style="@style/CenterProgressBarStyle"
+            android:translationZ="1dp"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
@@ -74,7 +79,7 @@
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/AppTheme.PopupOverlay"
 
-                    app:title="Sistem Manajemen Aset"
+                    app:title="Wargakita"
                     app:titleTextAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -133,7 +138,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="Menu Utama"
+                                    android:text="Wargakita"
                                     android:textColor="@color/gray_900"
                                     android:textSize="16sp"
                                     android:textStyle="bold" />
@@ -145,7 +150,7 @@
                                     android:layout_gravity="start"
                                     android:fontFamily="@font/acme"
                                     android:gravity="start"
-                                    android:text="Sistem Manajemen Aset"
+                                    android:text="Menu Utama"
                                     android:textColor="@color/colorPrimary"
                                     android:visibility="visible" />
 
@@ -322,7 +327,7 @@
 
                                         <ImageView
                                             android:layout_width="40dp"
-                                            android:layout_height="40dp"
+                                            android:layout_height="wrap_content"
                                             android:layout_gravity="center"
                                             android:layout_weight="1"
                                             android:tint="@color/colorPrimary"
@@ -335,7 +340,7 @@
                                             android:fontFamily="@font/acme"
                                             android:gravity="center"
                                             android:singleLine="true"
-                                            android:text="Cari"
+                                            android:text="Kas"
                                             android:textColor="@color/gray_900"
                                             android:textSize="12sp" />
                                     </LinearLayout>
@@ -374,7 +379,7 @@
                                             android:fontFamily="@font/acme"
                                             android:gravity="center"
                                             android:singleLine="true"
-                                            android:text="Group Warga"
+                                            android:text="Chat"
                                             android:textColor="@color/gray_900"
                                             android:textSize="12sp" />
                                     </LinearLayout>

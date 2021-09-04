@@ -10,7 +10,7 @@
         android:id="@+id/navigation_warga"
         android:icon="@drawable/ic_users"
         android:iconTint="#FFB5B5B5"
-        android:title="Aset" />
+        android:title="Warga" />
     <item
         android:id="@+id/navigation_peta"
         android:title="Peta" />
@@ -18,7 +18,7 @@
         android:id="@+id/navigation_toa"
         android:icon="@drawable/ic_toa"
         android:iconTint="#FFB5B5B5"
-        android:title="Kontak" />
+        android:title="Laporan" />
     <item
         android:id="@+id/navigation_lainnya"
         android:icon="@drawable/ic_more"

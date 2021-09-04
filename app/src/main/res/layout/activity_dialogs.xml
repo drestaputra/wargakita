@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_root"
+    style="@style/MatchParent"
+    tools:ignore="RtlHardcoded,RtlSymmetry">
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/appBarLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/white"-->
+<!--        android:theme="@style/AppTheme.AppBarOverlay"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        &lt;!&ndash; Toolbar &ndash;&gt;-->
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/colorWhite"-->
+<!--            app:navigationIcon="@drawable/ic_left_black"-->
+<!--            app:popupTheme="@style/AppTheme.PopupOverlay"-->
+<!--            app:title="Group Chat"-->
+<!--            app:titleMargin="0dp"-->
+<!--            app:titleTextColor="@color/gray_800" />-->
+
+
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+    <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+        android:id="@+id/swipy_refresh_layout"
+        style="@style/MatchParent"
+
+        app:srl_direction="top">
+
+        <ListView
+            android:id="@+id/list_dialogs_chats"
+            style="@style/ListViewWithoutDividerStyle" />
+    </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_chat_empty"
+        style="@style/MatchWidth"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            style="@style/WrapContent"
+            android:text="Chat masih kosong"
+            android:textColor="@color/text_color_dark_grey"
+            android:textSize="20sp"
+            app:robotoTypeface="roboto_medium" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_dialogs"
+        style="@style/CenterProgressBarStyle"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FabChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:clickable="true"
+        android:tint="@color/colorWhite"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_chat" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

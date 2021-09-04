@@ -13,6 +13,8 @@ public class UserPojo {
     String password;
     @SerializedName("no_hp")
     String no_hp;
+    @SerializedName("foto_user")
+    String foto_user;
     @SerializedName("email")
     String email;
     @SerializedName("instansi")
@@ -31,6 +33,11 @@ public class UserPojo {
     String kecamatan;
     @SerializedName("label_kecamatan")
     String label_kecamatan;
+    @SerializedName("latitude")
+    String latitude;
+    @SerializedName("longitude")
+    String longitude;
+
 
     @SerializedName("status")
     String status;
@@ -38,12 +45,13 @@ public class UserPojo {
     public UserPojo() {
     }
 
-    public UserPojo(String id_user, String nama_lengkap, String username, String password, String no_hp, String email, String instansi, String alamat, String provinsi, String label_provinsi, String kabupaten, String label_kabupaten, String kecamatan, String label_kecamatan, String status) {
+    public UserPojo(String id_user, String nama_lengkap, String username, String password, String no_hp, String foto_user, String email, String instansi, String alamat, String provinsi, String label_provinsi, String kabupaten, String label_kabupaten, String kecamatan, String label_kecamatan, String latitude, String longitude, String status) {
         this.id_user = id_user;
         this.nama_lengkap = nama_lengkap;
         this.username = username;
         this.password = password;
         this.no_hp = no_hp;
+        this.foto_user = foto_user;
         this.email = email;
         this.instansi = instansi;
         this.alamat = alamat;
@@ -53,6 +61,8 @@ public class UserPojo {
         this.label_kabupaten = label_kabupaten;
         this.kecamatan = kecamatan;
         this.label_kecamatan = label_kecamatan;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.status = status;
     }
 
@@ -101,6 +111,18 @@ public class UserPojo {
         return no_hp;
     }
 
+    public String getNama_lengkap() {
+        return nama_lengkap;
+    }
+
+    public String getFoto_user() {
+        return foto_user;
+    }
+
+    public void setFoto_user(String foto_user) {
+        this.foto_user = foto_user;
+    }
+
     public void setNo_hp(String no_hp) {
         this.no_hp = no_hp;
     }
@@ -145,7 +167,21 @@ public class UserPojo {
         this.kecamatan = kecamatan;
     }
 
+    public String getLatitude() {
+        return latitude == null ? "0" : latitude;
+    }
 
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude == null ? "" : longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 
     public String getStatus() {
         return status;

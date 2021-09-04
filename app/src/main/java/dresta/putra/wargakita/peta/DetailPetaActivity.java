@@ -72,6 +72,8 @@ import java.util.Objects;
 
 import dresta.putra.wargakita.R;
 import dresta.putra.wargakita.RetrofitClientInstance;
+import dresta.putra.wargakita.user.UserPojo;
+import dresta.putra.wargakita.user.UserResponsePojo;
 import dresta.putra.wargakita.utils.DirectionsJSONParser;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -90,7 +92,7 @@ public class DetailPetaActivity extends AppCompatActivity implements OnMapReadyC
     private SupportMapFragment MvPetaAset;
     private SearchView searchView;
     final String TAG = "tesdebug";
-    private String id_aset = "";
+    private String id_user = "";
 
     private GoogleMap mMap;
     public Location mLocation;
@@ -113,8 +115,8 @@ public class DetailPetaActivity extends AppCompatActivity implements OnMapReadyC
     //    private NightModeButton nightModeButton;
     private DayNightSwitch dayNightSwitch;
     private boolean isNightMode = false;
-    private List<PetaPojo> petaPojos;
-    private List<PetaPojo> markerPetaPojos = new ArrayList<>();
+    private List<UserPojo> userPojo;
+    private List<UserPojo> markerUserPojos = new ArrayList<>();
     private Marker mapMarker;
     private Polyline mPolyline;
     private FloatingActionButton FabDrawRoute;
@@ -124,9 +126,9 @@ public class DetailPetaActivity extends AppCompatActivity implements OnMapReadyC
 
     interface APIFragmentPeta {
         @FormUrlEncoded
-        @POST("api/aset/data_aset")
-        Call<PetaResponsePojo> getDataAset(
-                @Field("id_aset") String id_aset,
+        @POST("api/user/data_user")
+        Call<UserResponsePojo> getDataAset(
+                @Field("id_user") String id_user,
                 @Field("pencarian") String pencarian,
                 @Field("page") int page,
                 @Field("perPage") int perPage
@@ -148,7 +150,7 @@ public class DetailPetaActivity extends AppCompatActivity implements OnMapReadyC
                 finish();
             }
         });
-        id_aset = getIntent().getStringExtra("id_aset");
+        id_user = getIntent().getStringExtra("id_user");
         FabCurrentLocation = findViewById(R.id.FabCurrentLocation);
         FabDrawRoute = findViewById(R.id.FabDrawRoute);
         searchView = findViewById(R.id.mSearchView);
@@ -281,20 +283,20 @@ public class DetailPetaActivity extends AppCompatActivity implements OnMapReadyC
                     .title("").visible(false)
                     .snippet(""));
         }
-        Call<PetaResponsePojo> petaResponsePojoCall = apiFragmentPeta.getDataAset(id_aset, pencarian, 0, 10000);
-        petaResponsePojoCall.enqueue(new Callback<PetaResponsePojo>() {
+        Call<UserResponsePojo> petaResponsePojoCall = apiFragmentPeta.getDataAset(id_user, pencarian, 0, 10000);
+        petaResponsePojoCall.enqueue(new Callback<UserResponsePojo>() {
             @Override
-            public void onResponse(Call<PetaResponsePojo> call, Response<PetaResponsePojo> response) {
+            public void onResponse(Call<UserResponsePojo> call, Response<UserResponsePojo> response) {
                 if (response.body() != null) {
                     if (response.body().getStatus() == 200) {
-                        petaPojos = response.body().getData();
+                        userPojo = response.body().getData();
                         clusterManager = new ClusterManager<PetaMarkerPojo>(DetailPetaActivity.this, mMap);
                         mMap.setOnCameraIdleListener(clusterManager);
                         //      mMap.setOnMarkerClickListener(clusterManager);
 
-                        addItems(petaPojos);
-                        if (petaPojos.get(0) != null) {
-                            LatLng position = new LatLng(Double.parseDouble(petaPojos.get(0).getLatitude()), Double.parseDouble(petaPojos.get(0).getLongitude()));
+                        addItems(userPojo);
+                        if (userPojo.get(0) != null) {
+                            LatLng position = new LatLng(Double.parseDouble(userPojo.get(0).getLatitude()), Double.parseDouble(userPojo.get(0).getLongitude()));
                             mDestination = position;
                             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(position, 14);
                             mMap.animateCamera(cameraUpdate);
@@ -305,7 +307,7 @@ public class DetailPetaActivity extends AppCompatActivity implements OnMapReadyC
             }
 
             @Override
-            public void onFailure(Call<PetaResponsePojo> call, Throwable t) {
+            public void onFailure(Call<UserResponsePojo> call, Throwable t) {
 
             }
         });
@@ -496,18 +498,18 @@ public class DetailPetaActivity extends AppCompatActivity implements OnMapReadyC
     private ClusterManager<PetaMarkerPojo> clusterManager;
 
 
-    private void addItems(List<PetaPojo> petaPojosParam) {
+    private void addItems(List<UserPojo> userPojoParam) {
         // Set some lat/lng coordinates to start with.
         double lat = -7.989800;
         double lng = 111.377350;
-        if (petaPojosParam != null) {
-            for (int i = 0; i < petaPojosParam.size(); i++) {
-                lat = Double.parseDouble(petaPojosParam.get(i).getLatitude());
-                lng = Double.parseDouble(petaPojosParam.get(i).getLongitude());
-                String namaAset = (petaPojosParam.get(i).getNama_aset().length() > 50) ? petaPojosParam.get(i).getNama_aset().substring(0, 49) : petaPojosParam.get(i).getNama_aset();
-                String keterangan = (petaPojosParam.get(i).getKeterangan().length() > 50) ? petaPojosParam.get(i).getKeterangan().substring(0, 49) : petaPojosParam.get(i).getKeterangan();
+        if (userPojoParam != null) {
+            for (int i = 0; i < userPojoParam.size(); i++) {
+                lat = Double.parseDouble(userPojoParam.get(i).getLatitude() == null ? "0" : userPojoParam.get(i).getLatitude());
+                lng = Double.parseDouble(userPojoParam.get(i).getLongitude() == null ? "0" : userPojoParam.get(i).getLongitude());
+                String namaAset = (userPojoParam.get(i).getNama_lengkap().length() > 50) ? userPojoParam.get(i).getNama_lengkap().substring(0, 49) : userPojoParam.get(i).getNama_lengkap();
+                String keterangan = (userPojoParam.get(i).getAlamat().length() > 50) ? userPojoParam.get(i).getAlamat().substring(0, 49) : userPojoParam.get(i).getAlamat();
 
-                PetaMarkerPojo offsetItem = new PetaMarkerPojo(petaPojosParam.get(i).getId_aset(), lat, lng, namaAset, keterangan);
+                PetaMarkerPojo offsetItem = new PetaMarkerPojo(userPojoParam.get(i).getId_user(), lat, lng, namaAset, keterangan);
                 clusterManager.addItem(offsetItem);
             }
         }

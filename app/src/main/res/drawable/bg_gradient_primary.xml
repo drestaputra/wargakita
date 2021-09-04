@@ -7,8 +7,8 @@
     </corners>
     <gradient
         android:angle="180"
-        android:startColor="#1890FF"
-        android:endColor="#6B5695"
+        android:startColor="@color/colorPrimary"
+        android:endColor="#0CC9CD"
         android:type="linear" />
     <padding
         android:top="0dp"

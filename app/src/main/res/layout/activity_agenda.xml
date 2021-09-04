@@ -25,43 +25,44 @@
             android:background="@color/colorWhite"
             app:navigationIcon="@drawable/ic_left_black"
             app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Agenda Kegiatan"
             app:titleMargin="0dp"
             app:titleTextColor="@color/gray_800">
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="start|center_vertical"
-                        android:text="Agenda Kegiatan"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start|center_vertical"
+                    android:text="Agenda Kegiatan"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/BtnBuatAgenda"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/bg_gradient_success"
-                        android:elevation="0dp"
-                        android:enabled="true"
-                        android:fontFamily="@font/acme"
-                        android:text="Buat Agenda"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorWhite" />
+                <Button
+                    android:id="@+id/BtnBuatAgenda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/bg_gradient_success"
+                    android:elevation="0dp"
+                    android:enabled="true"
+                    android:fontFamily="@font/acme"
+                    android:text="Buat Agenda"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite" />
 
 
-                </LinearLayout>
+            </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 

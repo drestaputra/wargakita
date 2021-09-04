@@ -1,6 +1,7 @@
 package dresta.putra.wargakita;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClientInstance {
     public static Retrofit retrofit;
-    public static final String BASE_URL = "https://siana.id/";
+    public static final String BASE_URL = "https://wargakita.drestaputra.com/";
     public static PrefManager prefManager;
 
     public static Retrofit getRetrofitInstance(final Context context) {

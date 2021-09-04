@@ -21,4 +21,8 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="top_bar_height">40dp</dimen>
+    <dimen name="chat_attachment_preview_size">80dp</dimen>
+    <dimen name="list_item_side_margin">16dp</dimen>
+    <dimen name="padding_common">8dp</dimen>
+    <dimen name="padding_common_big">20dp</dimen>
 </resources>

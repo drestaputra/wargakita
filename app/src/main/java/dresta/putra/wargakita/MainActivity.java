@@ -10,7 +10,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 //import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -24,7 +23,7 @@ import android.view.WindowManager;
 import dresta.putra.wargakita.fragment.FragmentFive;
 import dresta.putra.wargakita.fragment.FragmentKontak;
 import dresta.putra.wargakita.fragment.FragmentPeta;
-import dresta.putra.wargakita.fragment.FragmentAset;
+import dresta.putra.wargakita.fragment.FragmentWarga;
 import dresta.putra.wargakita.login.LoginActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,7 +33,7 @@ import retrofit2.http.GET;
 
 public class MainActivity extends AppCompatActivity {
     final Fragment fragment1 = new HomeFragment();
-    final Fragment fragment2 = new FragmentAset();
+    final Fragment fragment2 = new FragmentWarga();
     final Fragment fragment3 = new FragmentPeta();
     final Fragment fragment4 = new FragmentKontak();
     final Fragment fragment5 = new FragmentFive();
@@ -43,11 +42,6 @@ public class MainActivity extends AppCompatActivity {
     PrefManager prefManager;
     private String id_owner = "";
 
-    interface  APIMainActivity{
-        @GET("api/about/id_owner")
-        Call<ResponsePojo> getIdOwner();
-    }
-    private APIMainActivity apiMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(Iback);
             MainActivity.this.finish();
         }
-        apiMainActivity = RetrofitClientInstance.getRetrofitInstance(MainActivity.this).create(APIMainActivity.class);
         FloatingActionButton Fab= findViewById(R.id.Fab);
         Fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,29 +81,11 @@ public class MainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.main_container, fragment1, "fragment1").detach(fragment1).commit();
         fm.beginTransaction().attach(fragment1).commit();
         getCurrentFirebaseToken();
-        getIdOwner();
-        FirebaseMessaging.getInstance().subscribeToTopic("all");
+
+
     }
 
-    private void getIdOwner(){
-        Call<ResponsePojo> responsePojoCall =  apiMainActivity.getIdOwner();
-        responsePojoCall.enqueue(new Callback<ResponsePojo>() {
-            @Override
-            public void onResponse(Call<ResponsePojo> call, Response<ResponsePojo> response) {
-                if (response.body()!=null){
-                    if (response.body().getStatus()==200){
-                        id_owner = response.body().getMsg();
-                        FirebaseMessaging.getInstance().subscribeToTopic(id_owner);
-                    }
-                }
-            }
 
-            @Override
-            public void onFailure(Call<ResponsePojo> call, Throwable t) {
-
-            }
-        });
-    }
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();

@@ -55,8 +55,7 @@ public class AdapterSlider extends PagerAdapter {
             } else {
                 Picasso.with(context).load(R.color.greycustom2).into(imageView);
             }
-        title.setText(models.get(position).getJudul_slider());
-        desc.setText(Html.fromHtml(models.get(position).getDeskripsi_slider()));
+        title.setText(String.valueOf(models.get(position).getJudul_slider()));
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
