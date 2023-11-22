@@ -43,7 +43,7 @@
             android:resource="@color/colorAccent" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBGKluBmYhOJWt9bZv1GVZLBQD6B0M_T3Y" />
+            android:value="apikey" />
 
         <activity android:name=".user.EditPasswordUserActivity" />
         <activity android:name=".user.EditProfilUserActivity" />
